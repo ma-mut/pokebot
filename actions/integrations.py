@@ -17,7 +17,6 @@ class Integrations():
         try:
 
             response = requests.get(url=f'{POKEMON_ENDPOINT}/{pokemon_name}').json()
-            print(response)
 
             pokemon_type = ""
             types_len = len(response['types'])
