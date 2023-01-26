@@ -34,6 +34,7 @@ PARA CONSULTA A TRAVÉS DE API:
 ```
 
 _**Funcionamiento**_
+
 Para los detalles de funcionamiento, ir al directorio: [images](/images/README.md)
 
 _**Notas: Entrenamiento y Resultados:**_ 
