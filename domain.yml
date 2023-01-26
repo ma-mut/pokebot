@@ -1,0 +1,135 @@
+version: "3.1"
+
+intents:
+- faq
+#- faq/quien_eres
+#- faq/quien_te_creo
+#- faq/eres_una_maquina
+#- faq/que_haces
+- buscar_pokemon
+- intent_pokemon_name
+- saludo
+- despedida
+- extraer_entidad
+
+entities:
+  - PER
+  # desde SpacyEntityExtractor
+  - number
+  - time
+  - url
+  - duration
+  # desde DucklingEntityExtractor
+  - pokemon_name
+  # desde DIET Classifier
+
+actions:
+  - validate_user_name_form
+  - validate_pokemon_name_form
+  - action_informacion_pokemon
+  - action_mostrar_entidades
+
+slots:
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+      conditions:
+      - active_loop: user_name_form
+        requested_slot: user_name
+  pokemon_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: pokemon_name
+  pokemon_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  abilities_num:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  pokemon_abilities:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  counter:
+    type: float
+    initial_value: 0
+    influence_conversation: false
+    mappings:
+    - type: custom
+
+forms:
+  user_name_form:
+    required_slots:
+      - user_name
+  pokemon_name_form:
+    required_slots:
+      - pokemon_name
+
+responses:
+  utter_saludo_inicial:
+  - text: "¡Hola!👋 Soy Pokébot y seré tu nueva Pokedex 💻"
+  utter_ask_user_name:
+  - text: "Por favor, ingresa tu nombre para continuar:"
+  utter_menu:
+  - text: "¡Muy bien, {user_name}! Elige una de estas opciones para poder ayudarte:"
+    buttons: 
+    - title: "Buscar un pokemon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar la conversación"
+      payload: "/despedida"
+  utter_ask_pokemon_name:
+  - text: "Escribe el nombre del pokemon que estás buscando 🔎"
+  utter_despedida:
+  - text: "¡Ojalá verte pronto!🤚 Estaré aquí por si me necesitas 😄. Adiós, {user_name}."
+  utter_reingreso_menu_inicial:
+  - text: "¡Qué bueno que regresaste!😊 ¿Qué te gustaría hacer, {user_name}?"
+    buttons:
+    - title: "Quiero buscar información de un pokémon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar la conversación"
+      payload: "/despedida"
+  utter_reingreso_menu:
+  - text: "¿Qué te gustaría hacer ahora, {user_name}?"
+    buttons:
+    - title: "Quiero buscar información de otro pokémon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar la conversación"
+      payload: "/despedida"
+  utter_respuesta_informacion_pokemon:
+  - text: "¡Muy bien! {pokemon_name} {pokemon_type} {abilities_num}: {pokemon_abilities}"
+  - text: "¡Excelente! {pokemon_name} {pokemon_type} {abilities_num}: {pokemon_abilities}"
+  - text: "¡Perfecto! {pokemon_name} {pokemon_type} {abilities_num}: {pokemon_abilities}"
+  - text: "¡Mira lo que encontré! {pokemon_name} {pokemon_type} {abilities_num}: {pokemon_abilities}"
+  utter_faq/quien_eres:
+  - text: "Soy Pokébot y estoy preparado para ser tu nueva Pokedex 💻"
+  utter_faq/quien_te_creo:
+  - text: "Fui creado por Mahmut🤓, un lingüista computacional chileno 🇨🇱"
+  utter_faq/eres_una_maquina:
+  - text: "Sí, soy un chatbot basado en tecnologías de NLP e Inteligencia Artificial"
+  utter_faq/que_haces:
+  - text: "Por el momento, puedo ayudarte a buscar información de un pokémon si me dices su nombre. ¿Qué te gustaría hacer?"
+    buttons:
+    - title: "Quiero buscar información de un pokémon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar la conversación"
+      payload: "/despedida"
+  utter_default_fallback:
+  - text: "Lo lamento, no pude entender tu mensaje. Intenta decírmelo de otra forma o escoge una de mis opciones:"
+    buttons:
+    - title: "Quiero buscar información de un pokémon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar la conversación"
+      payload: "/despedida"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

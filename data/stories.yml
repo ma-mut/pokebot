@@ -1,0 +1,33 @@
+version: "3.1"
+
+stories:
+
+- story: buscar pokemon
+  steps:
+  - intent: buscar_pokemon
+  - action: pokemon_name_form
+  - active_loop: pokemon_name_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_informacion_pokemon
+  - action: utter_respuesta_informacion_pokemon
+  - action: utter_reingreso_menu
+
+- story: nombre pokemon
+  steps:
+  - intent: intent_pokemon_name
+  - action: action_informacion_pokemon
+  - action: utter_respuesta_informacion_pokemon
+  - action: utter_reingreso_menu
+
+- story: extraer entidades duckling
+  steps:
+  - intent: extraer_entidad
+  - action: action_mostrar_entidades
+  - action: utter_reingreso_menu
+
+- story: cierre
+  steps:
+  - intent: despedida
+  - action: utter_despedida

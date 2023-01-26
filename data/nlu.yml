@@ -1,0 +1,111 @@
+version: "3.1"
+
+nlu:
+
+- intent: saludo
+  examples: |
+    - hola
+    - hola hola
+    - hi
+    - hello
+    - holaa
+    - buenos días
+    - buenas tardes
+    - buenas noches
+    - hello
+    - holanda
+    - buena bueeenas
+    - wena
+    - wena po
+    - wena wena
+    - guena
+    - holas
+    - holi
+    - oli
+
+- intent: despedida
+  examples: |
+    - chao
+    - nos vemos
+    - loh vimoh
+    - lo vimo
+    - hasta mañana
+    - chao pescao
+    - adiós
+    - hasta pronto
+    - hasta luego
+    - chao chao
+    - bye bye
+    - bye
+    - adiosito
+    - adiosin
+    - chao gracias
+    - vale chao
+
+- intent: buscar_pokemon
+  examples: |
+    - Buscar pokémon
+    - buscar pokemon
+    - información sobre pokemon
+    - informacion sobre pokémon
+    - información pokemones
+    - info de pokémon
+    - info pokemon
+    - info sobre pokemon
+
+- intent: faq/quien_eres
+  examples: |
+    - quien eres
+    - quién eres
+    - cómo te llamas
+    - como te llamai
+    - cuál es tu nombre
+    - dime tu nombre
+
+- intent: faq/quien_te_creo
+  examples: |
+    - quién te inventó
+    - quien te creo
+    - quienes te inventaron
+    - quién es tu creador
+    - quien es tu inventor
+    - quiénes te crearon
+    - quiénes te inventaron
+
+- intent: faq/eres_una_maquina
+  examples: |
+    - eres un bot
+    - ¿eres un bot?
+    - eres una máquina
+    - eres un chatbot
+    - estoy hablando con un chatbot?
+    - eres una persona o una maquina
+    - eres real
+    - eres una maquina?
+
+- intent: faq/que_haces
+  examples: |
+    - qué puedes hacer?
+    - qué cosas haces
+    - en qué me puedes ayudar
+    - qué cosas puedes hacer
+    - cuáles son tus funciones
+    - qué más puedes hacer
+    - para qué sirves
+    - para que sirves?
+
+- intent: extraer_entidad
+  examples: |
+    - 10 de la noche
+    - 10 de la mañana
+    - mañana
+    - hoy
+    - el viernes
+    - el martes
+    - 500 pesos
+    - mil pesos
+    - 500 metros
+    - 20 km
+    - 100000
+    - 400
+    - 2
