@@ -15,27 +15,29 @@ _**Notas:**_
 _**Instrucciones de ejecución del proyecto:**_
 
 ```
-1. git clone https://github.com/ma-mut/pokebot.git
-2. conda create -n <entorno_virtual> python=3.8.13
+1. conda create -n <entorno_virtual> python=3.8.13
+2. git clone https://github.com/ma-mut/pokebot.git pokebot
+2. *en terminal* cd pokebot
 3. conda activate <entorno_virtual>
 4. pip install -r requirements.txt
-5. pip install rasa 
+5. pip install rasa
 6. rasa train
-7. rasa run actions --cors "*" --debug
+7. docker run -p 8000:8000 rasa/duckling
+8. rasa run actions --cors "*" --debug
 PARA VER WIDGET DESDE INDEX.HTML
-- desde paso 7:
-8. rasa run -m models --enable-api --log-file out.log --cors "*"
-9. abrir index.html en navegador por defecto
+- desde paso 8:
+9. rasa run -m models --enable-api --log-file out.log --cors "*"
+10. abrir index.html en navegador por defecto
 PARA CONSULTA A TRAVÉS DE API:
 - desde paso 7:
-8. rasa run --enable-api --cors "*"
-9. usar Postman o curl desde la terminal para la consulta
+9. rasa run --enable-api --cors "*"
+10. usar Postman o curl desde la terminal para la consulta
 ```
 
 _**Notas: Entrenamiento y Resultados:**_ 
 
-- Se usa **SpacyEntityExtractor** y su entidad "PER" para el reconocimiento de nombres propios de personas, por lo que este reconocimiento estará limitado por el alcance de este recurso y la falta de reconocimiento no corresponde a una mala implementación, sino a la mera capacidad del extractor para reconocer el nombre correspondiente.
-- Se usa **DucklingEntityExtractor** para extraer las entidades "time", "number", "url", "duration", aunque sin una cantidad suficiente de frases de entrenamiento de uso real en que aparezcan estas entidades siendo empleadas. La respuesta por defecto frente al reconocimiento es el envío en mensaje del contenido reconocido.
+- Se usa **SpacyEntityExtractor** y su entidad *"PER"* para el reconocimiento de nombres propios de personas, por lo que este reconocimiento estará limitado por el alcance de este recurso y la falta de reconocimiento no corresponde a una mala implementación, sino a la mera capacidad del extractor para reconocer el nombre correspondiente.
+- Se usa **DucklingEntityExtractor** para extraer las entidades *"time", "number", "url", "duration"*, aunque sin una cantidad suficiente de frases de entrenamiento de uso real en que aparezcan estas entidades siendo empleadas. Al reconocer alguna de estas entidades, la respuesta contiene un mensaje de texto con el contenido reconocido (string que toma de referencia el JSON obtenido de respuesta).
 - Se usa **DIETClassifier** para el reconocimiento de nombres de Pokémon, junto a un entrenamiento significativo que permita reconocer todos los nombres de Pokémon existentes.
 - Se usa el **Rasa Official Widget** (index.html) para mostrar el funcionamiento básico de este prototipo. Esto implica que no se realizaron adecuaciones específicas para el front-end.
 - Al lanzar algunos comandos  o *rasa run -m models --enable-api --log-file out.log --cors "*"* pueden recibirse 2 advertencias:
