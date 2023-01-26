@@ -1,7 +1,7 @@
 # Capturas de Funcionamiento
 
 *Saludo*
-- [Inicio](https://github.com/ma-mut/pokebot/main/images/1.inicio.png)
+- [Inicio](./1.inicio.png)
 
 *Pokémon*
 - [Botón Pokémon](./2.boton-pokemon.png)
