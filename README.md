@@ -33,6 +33,9 @@ PARA CONSULTA A TRAVÉS DE API:
 11. usar Postman o curl desde la terminal para la consulta
 ```
 
+_**Funcionamiento**_
+Para los detalles de funcionamiento, ir al directorio: [images](/images/README.md)
+
 _**Notas: Entrenamiento y Resultados:**_ 
 
 - Se usa **SpacyEntityExtractor** y su entidad *"PER"* para el reconocimiento de nombres propios de personas, por lo que este reconocimiento estará limitado por el alcance de este recurso y la falta de reconocimiento no corresponde a una mala implementación, sino a la mera capacidad del extractor para reconocer el nombre correspondiente.
@@ -49,4 +52,3 @@ _**Notas: Entrenamiento y Resultados:**_
     4. qué puedes hacer. 
 - La falta o carencia de entrenamiento para las intenciones por defecto "out-of-scope" y/o "nlu_fallback", así como también la configuración del umbral de confianza (Fallback Classifier threshold) podrían implicar el reconocimiento incorrecto o "forzado" de algunos inputs de usuario.
 
-Para los detalles de la data, ir a: [Imágenes del funcionamiento](/images/README.md)
