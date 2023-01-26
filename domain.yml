@@ -11,6 +11,7 @@ intents:
 - saludo
 - despedida
 - extraer_entidad
+- out-of-scope
 
 entities:
   - PER
@@ -122,7 +123,14 @@ responses:
       payload: "/buscar_pokemon"
     - title: "Quiero terminar la conversación"
       payload: "/despedida"
-  utter_default_fallback:
+  utter_out_of_scope:
+  - text: "Lamento no poder ayudarte con eso 😢, pero sí puedo hacerlo con lo siguiente:"
+    buttons:
+    - title: "Quiero buscar información de un pokémon"
+      payload: "/buscar_pokemon"
+    - title: "Quiero terminar esta conversación"
+      payload: "/despedida"
+  utter_default:
   - text: "Lo lamento, no pude entender tu mensaje. Intenta decírmelo de otra forma o escoge una de mis opciones:"
     buttons:
     - title: "Quiero buscar información de un pokémon"

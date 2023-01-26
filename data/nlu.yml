@@ -94,6 +94,18 @@ nlu:
     - para qué sirves
     - para que sirves?
 
+- intent: out-of-scope
+  examples: |
+    - vamos al museo?
+    - quieres ir al parque?
+    - vamos a la playa?
+    - como se llama el presidente?
+    - de que color es el cielo
+    - porque el cielo es azul
+    - como puedo alquilar un auto
+    - comprar una lavadora
+    - rentar un yate
+
 - intent: extraer_entidad
   examples: |
     - 10 de la noche
