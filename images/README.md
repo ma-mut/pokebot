@@ -1,24 +1,24 @@
 # Capturas de Funcionamiento
 
 *Saludo*
-[](1.inicio.png)
+[Inicio](./images/1.inicio.png)
 *Pokémon*
-[](2.boton-pokemon.png)
-[](3.nombre-pokemon.png)
-[](4.frase-pokemon.png)
+[Botón Pokémon](./images/2.boton-pokemon.png)
+[Nombre Pokémon](./images/3.nombre-pokemon.png)
+[Frase Pokémon](./images/4.frase-pokemon.png)
 *Despedida*
-[](5.boton-terminar.png)
-[](6.respuesta-terminar.png)
+[Botón Terminar](./images/5.boton-terminar.png)
+[Respuesta Terminar](./images/6.respuesta-terminar.png)
 *Reinicio*
-[](7.reinicio.png)
+[Reiniciar](./images/7.reinicio.png)
 *FAQs*
-[](8.faqs-1.png)
-[](9.faqs-2.png)
+[FAQs-1](./images/8.faqs-1.png)
+[FAQs-2](./images/9.faqs-2.png)
 *Duckling*
-[](10.entities-1.png)
-[](11.entities-2.png)
-[](12.entities-3.png)
+[Entidades - 1](./images/10.entities-1.png)
+[Entidades - 2](./images/11.entities-2.png)
+[Entidades - 3](./images/12.entities-3.png)
 *No entiende*
-[](13.no-entiendo-1.png)
-[](14.no-entiendo-2.png)
+[Fallback - 1](./images/13.no-entiendo-1.png)
+[Fallback - 2](./images/14.no-entiendo-2.png)
 
