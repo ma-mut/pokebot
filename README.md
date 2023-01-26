@@ -15,7 +15,7 @@ _**Notas:**_
 _**Instrucciones de ejecución del proyecto:**_
 
 ```
-1. git clone 
+1. git clone https://github.com/ma-mut/pokebot.git
 2. conda create -n <entorno_virtual> python=3.8.13
 3. conda activate <entorno_virtual>
 4. pip install -r requirements.txt
