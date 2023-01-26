@@ -1,7 +1,7 @@
 # Capturas de Funcionamiento
 
 *Saludo*
-[Inicio](./images/1.inicio.png)
+[Inicio](./1.inicio.png)
 *Pokémon*
 [Botón Pokémon](./images/2.boton-pokemon.png)
 [Nombre Pokémon](./images/3.nombre-pokemon.png)
