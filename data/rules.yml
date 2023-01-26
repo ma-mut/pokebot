@@ -24,6 +24,11 @@ rules:
   - intent: faq
   - action: utter_faq
 
+- rule: out of scope
+  steps:
+  - intent: out-of-scope
+  - action: utter_out_of_scope
+
 - rule: fallback
   steps:
   - intent: nlu_fallback

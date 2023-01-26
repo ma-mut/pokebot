@@ -9,6 +9,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 
 from .integrations import Integrations
+from .pokemon_names import pokemon_names
 
 class ActionInformacionPokemon(Action):
 
@@ -136,33 +137,34 @@ class ValidatePokemonNameForm(FormValidationAction):
         counter = tracker.get_slot('counter')
         print('COUNTER: ', counter)
 
+        latest_entities_array = tracker.latest_message.get('entities')
+        latest_intent = tracker.get_intent_of_latest_message(skip_fallback_intent=False)
+        print('LATEST_ENTITIES_ARRAY: ',latest_entities_array)
+
         if counter==0:
-            print('...COUNTER=0...')
-            return {'pokemon_name': None, counter: 0}
-        else:
-            print('...COUNTER!=0...')
-            latest_entities_array = tracker.latest_message.get('entities')
-            print('LATEST_ENTITIES_ARRAY: ', latest_entities_array)
-            if len(latest_entities_array)>=1:
-                pokemon_name_list = []
-                for i in latest_entities_array:
-                    print('ARRAY ELEMENT: ',i)
-                    entity_type = i['entity']
-                    print('ENTITY_TYPE: ', entity_type)
-                    entity_extractor = i['extractor']
-                    print('EXTRACTOR: ', entity_extractor)
-                    if entity_type=='pokemon_name' and entity_extractor=="DIETClassifier":
-                        pokemon_name_list.append(i['value'])
-                    print('LATEST_ENTITY_VALUES: ', pokemon_name_list)
-                if len(pokemon_name_list)>=1:
-                    print('...POKEMON NAME...')
-                    return {'pokemon_name': str(pokemon_name_list[0]).lower()}
-                else:
-                    print('NOT POKEMON NAME ENTITY - NONE')
-                    return {'pokemon_name': None}
+            if latest_intent=='buscar_pokemon' and len(latest_entities_array)>=1:
+                entity_value = latest_entities_array[0]['value']
+                return {'pokemon_name': entity_value}
             else:
-                print('NO ENTITIES - NONE')
+                print('...ASKING POKEMON NAME...')
                 return {'pokemon_name': None}
+        else:
+            if len(latest_entities_array)>=1:
+                for i in latest_entities_array:
+                    entity_type = i['entity']
+                    print('LATEST_ENTITY_TYPE: ', entity_type)
+                    entity_value = i['value']
+                    print('LATEST_ENTITY_VALUE: ',entity_value)
+                    entity_extractor = i['extractor']
+                    print('LATEST_ENTITY_EXTRACTOR: ', entity_extractor)
+                    if entity_type=='pokemon_name' and entity_extractor=='RegexEntityExtractor':
+                        payload = {'user_name': entity_value}
+                    else:
+                        payload = {'user_name': None}
+                    return payload
+            else:
+                print('NO ENTITIES RECEIVED - NONE')
+                return {'user_name': None}
 
     def validate_pokemon_name(        
             self,
@@ -172,11 +174,18 @@ class ValidatePokemonNameForm(FormValidationAction):
             domain: DomainDict,
             ) -> Dict[Text,Any]:
 
-            counter = tracker.get_slot('counter')
+            integracion = Integrations()
 
+            counter = tracker.get_slot('counter')
+            print('SLOT_VALUE: ', slot_value)
             if slot_value is not None:
-                print('...SLOT VALUE...')
-                return {'pokemon_name': slot_value, 'counter': 0}
+                user_pokemon_name = str(slot_value).lower()
+                validation = integracion.validate_pokemon_name_function(pokemon_names, user_pokemon_name)
+                if validation.get('pokemon_name')!='':
+                    return {'pokemon_name': user_pokemon_name, 'counter':0}
+                else:
+                    dispatcher.utter_message('Parece que ingresaste un nombre de pokémon incorrecto o inexistente. Inténtalo de nuevo.')
+                    return {'pokemon_name': None, 'counter': counter+1}
             else:
                 print('INVALID SLOT VALUE')
                 counter += 1

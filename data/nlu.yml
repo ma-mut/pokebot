@@ -5,20 +5,17 @@ nlu:
 - intent: saludo
   examples: |
     - hola
-    - hola hola
     - hi
     - hello
-    - holaa
+    - hola
     - buenos días
     - buenas tardes
     - buenas noches
     - hello
     - holanda
-    - buena bueeenas
     - wena
     - wena po
     - wena wena
-    - guena
     - holas
     - holi
     - oli
@@ -37,7 +34,6 @@ nlu:
     - chao chao
     - bye bye
     - bye
-    - adiosito
     - adiosin
     - chao gracias
     - vale chao
@@ -52,6 +48,16 @@ nlu:
     - info de pokémon
     - info pokemon
     - info sobre pokemon
+    - habilidades de [pikachu](pokemon_name)
+    - cuáles son las habilidades de [charmander](pokemon_name)
+    - información sobre [Charmeleon](pokemon_name)
+    - buscar habilidades de [altaria](pokemon_name)
+    - información de [alakazam](pokemon_name)
+    - [Abomasnow](pokemon_name)
+    - [Abra](pokemon_name)
+    - [Absol](pokemon_name)
+    - [Accelgor](pokemon_name)
+    - [Aegislash](pokemon_name)
 
 - intent: faq/quien_eres
   examples: |
@@ -94,17 +100,17 @@ nlu:
     - para qué sirves
     - para que sirves?
 
-- intent: out-of-scope
-  examples: |
-    - vamos al museo?
-    - quieres ir al parque?
-    - vamos a la playa?
-    - como se llama el presidente?
-    - de que color es el cielo
-    - porque el cielo es azul
-    - como puedo alquilar un auto
-    - comprar una lavadora
-    - rentar un yate
+#- intent: out-of-scope
+#  examples: |
+#    - vamos al museo?
+#    - quieres ir al parque?
+#    - vamos a la playa?
+#    - como se llama el presidente?
+#    - de que color es el cielo
+#    - porque el cielo es azul
+#    - como puedo alquilar un auto
+#    - comprar una lavadora
+#    - rentar un yate
 
 - intent: extraer_entidad
   examples: |
@@ -116,8 +122,3 @@ nlu:
     - el martes
     - 500 pesos
     - mil pesos
-    - 500 metros
-    - 20 km
-    - 100000
-    - 400
-    - 2

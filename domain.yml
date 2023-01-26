@@ -7,7 +7,6 @@ intents:
 #- faq/eres_una_maquina
 #- faq/que_haces
 - buscar_pokemon
-- intent_pokemon_name
 - saludo
 - despedida
 - extraer_entidad
@@ -22,7 +21,7 @@ entities:
   - duration
   # desde DucklingEntityExtractor
   - pokemon_name
-  # desde DIET Classifier
+  # desde RegexEntityExtractor
 
 actions:
   - validate_user_name_form

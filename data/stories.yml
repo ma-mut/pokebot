@@ -14,13 +14,6 @@ stories:
   - action: utter_respuesta_informacion_pokemon
   - action: utter_reingreso_menu
 
-- story: nombre pokemon
-  steps:
-  - intent: intent_pokemon_name
-  - action: action_informacion_pokemon
-  - action: utter_respuesta_informacion_pokemon
-  - action: utter_reingreso_menu
-
 - story: extraer entidades duckling
   steps:
   - intent: extraer_entidad

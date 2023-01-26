@@ -65,3 +65,21 @@ class Integrations():
         
         return self.pokemon_information_dict
 
+    def validate_pokemon_name_function(self, pokemon_names, user_pokemon_name):
+
+        self.validation_dict = {
+            'pokemon_name': ''
+        }
+
+        pokemon_name_for_request = ''
+
+        for e in pokemon_names:
+            actual_pokemon_name = e['pokemon_name']
+            if user_pokemon_name==actual_pokemon_name:
+                pokemon_name_for_request += actual_pokemon_name
+                self.validation_dict['pokemon_name'] = pokemon_name_for_request
+                break
+            else:
+                pokemon_name_for_request = ''
+
+        return self.validation_dict
